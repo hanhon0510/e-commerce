@@ -27,8 +27,6 @@ const MainCarousel = () => {
       autoPlay
       autoPlayInterval={1000}
       infinite
-      // responsive={responsive}
-      // controlsStrategy="alternate"
     />
   );
 };
