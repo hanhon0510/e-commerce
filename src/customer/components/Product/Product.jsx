@@ -84,8 +84,6 @@ export default function Product() {
     let filterValue = searchParams.getAll(sectionId);
 
     if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
-      console.log("filterValue", filterValue);
-      console.log("filterValue[0]", filterValue[0]);
       filterValue = filterValue[0].split(",").filter((item) => item !== value);
 
       if (filterValue.length === 0) {
