@@ -18,11 +18,11 @@ const ProductReviewCard = () => {
         <Grid item xs={9}>
           <div className="space-y-2">
             <div>
-              <p>Hieu</p>
-              <p>11/11/1111</p>
+              <p className="font-semibold text-lg">Hieu</p>
+              <p className="opacity-70">11/11/1111</p>
             </div>
           </div>
-          <Rating value={4.5} name="half-rating" />
+          <Rating value={4.5} name="half-rating" readOnly precision={0.5} />
           <p>
             A radio group with its fields visually hidden. It contains six radio
             buttons, one for each star, and another for 0 stars that is checked
