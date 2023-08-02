@@ -11,7 +11,7 @@ const orderStatus = [
 
 const Order = () => {
   return (
-    <div>
+    <div className="lg:px-20 px-5">
       <Grid container sx={{ justifyContent: "space-between" }} className="">
         <Grid item xs={2.5}>
           <div className="h-auto shadow-lg bg-white p-5 sticky top-5">
@@ -37,7 +37,11 @@ const Order = () => {
           </div>
         </Grid>
         <Grid item xs={9}>
-          <OrderCart />
+          <div className="space-y-5">
+            {[1, 1, 1, 1].map((item) => (
+              <OrderCart />
+            ))}
+          </div>
         </Grid>
       </Grid>
     </div>
