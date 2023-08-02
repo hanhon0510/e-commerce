@@ -424,30 +424,6 @@ export default function Product() {
                                   ))}
                                 </RadioGroup>
                               </FormControl>
-                              {/* {section.options.map((option, optionIdx) => (
-                                <div
-                                  key={option.value}
-                                  className="flex items-center"
-                                >
-                                  <input
-                                    type="
-                                    checkbox"
-                                    onChange={() =>
-                                      handleFilter(option.value, section.id)
-                                    }
-                                    id={`filter-${section.id}-${optionIdx}`}
-                                    name={`${section.id}[]`}
-                                    defaultValue={option.checked}
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600"
-                                  />
-                                  <label
-                                    htmlFor={`filter${section.id}-${optionIdx}`}
-                                    className="ml-3 text-sm text-gray-600"
-                                  >
-                                    {option.label}
-                                  </label>
-                                </div>
-                              ))} */}
                             </div>
                           </Disclosure.Panel>
                         </>

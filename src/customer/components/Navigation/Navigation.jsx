@@ -6,6 +6,19 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+import {
+  Avatar,
+  Box,
+  Button,
+  ClickAwayListener,
+  Grow,
+  MenuItem,
+  MenuList,
+  Paper,
+  Popper,
+} from "@mui/material";
+import UserAvatar from "../UserAvatar/UserAvatar";
 // import { navigationData } from "./navigationData";
 
 function classNames(...classes) {
@@ -40,38 +53,38 @@ const navigationData = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { id: "top", name: "Tops", href: "#" },
+            { id: "dress", name: "Dresses", href: "#" },
+            { id: "pant", name: "Pants", href: "#" },
+            { id: "denim", name: "Denim", href: "#" },
+            { id: "sweater", name: "Sweaters", href: "#" },
+            { id: "tshirt", name: "T-Shirts", href: "#" },
+            { id: "jacket", name: "Jackets", href: "#" },
+            { id: "activewear", name: "Activewear", href: "#" },
+            { id: "all", name: "Browse All", href: "#" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { id: "watch", name: "Watches", href: "#" },
+            { id: "wallet", name: "Wallets", href: "#" },
+            { id: "bag", name: "Bags", href: "#" },
+            { id: "sunglasses", name: "Sunglasses", href: "#" },
+            { id: "hat", name: "Hats", href: "#" },
+            { id: "belt", name: "Belts", href: "#" },
           ],
         },
         {
           id: "brands",
           name: "Brands",
           items: [
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Significant Other", href: "#" },
+            { id: "full-nelson", name: "Full Nelson", href: "#" },
+            { id: "my-way", name: "My Way", href: "#" },
+            { id: "re-arranged", name: "Re-Arranged", href: "#" },
+            { id: "counterfeit", name: "Counterfeit", href: "#" },
+            { id: "significant-other", name: "Significant Other", href: "#" },
           ],
         },
       ],
@@ -102,35 +115,35 @@ const navigationData = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { id: "tops", name: "Tops", href: "#" },
+            { id: "pants", name: "Pants", href: "#" },
+            { id: "sweaters", name: "Sweaters", href: "#" },
+            { id: "t-shirts", name: "T-Shirts", href: "#" },
+            { id: "jackets", name: "Jackets", href: "#" },
+            { id: "activewear", name: "Activewear", href: "#" },
+            { id: "browse-all", name: "Browse All", href: "#" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { id: "watch", name: "Watches", href: "#" },
+            { id: "wallet", name: "Wallets", href: "#" },
+            { id: "bag", name: "Bags", href: "#" },
+            { id: "sunglasses", name: "Sunglasses", href: "#" },
+            { id: "hat", name: "Hats", href: "#" },
+            { id: "belt", name: "Belts", href: "#" },
           ],
         },
         {
           id: "brands",
           name: "Brands",
           items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
+            { id: "re-arranged", name: "Re-Arranged", href: "#" },
+            { id: "counterfeit", name: "Counterfeit", href: "#" },
+            { id: "full-nelson", name: "Full Nelson", href: "#" },
+            { id: "my-way", name: "My Way", href: "#" },
           ],
         },
       ],
@@ -144,9 +157,33 @@ const navigationData = {
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const [openAuthModel, setOpenAuthModel] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(false);
+  const openUserMenu = Boolean(anchorEl);
+  const jwt = localStorage.getItem("jwt");
+
+  const handleUserClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseUserMenu = (event) => {
+    setAnchorEl(null);
+  };
+  const handleOpen = () => {
+    setOpenAuthModel(true);
+  };
+  const handleClose = () => {
+    setOpenAuthModel(false);
+  };
+
+  const handleCategoryClick = (category, section, item, close) => {
+    navigate(`/${category.id}/${section.id}/${item.id}`);
+    close();
+  };
 
   return (
-    <div className="bg-white z-50">
+    <div className="bg-white pb-10">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -346,7 +383,7 @@ export default function Navigation() {
               <div className="ml-4 flex lg:ml-0">
                 <span className="sr-only">Your Company</span>
                 <img
-                  className="h-8 w-auto"
+                  className="h-8 w-8 mr-2 "
                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                   alt=""
                 />
@@ -357,7 +394,7 @@ export default function Navigation() {
                 <div className="flex h-full space-x-8">
                   {navigationData.categories.map((category) => (
                     <Popover key={category.name} className="flex">
-                      {({ open }) => (
+                      {({ open, close }) => (
                         <>
                           <div className="relative flex">
                             <Popover.Button
@@ -388,7 +425,7 @@ export default function Navigation() {
                                 aria-hidden="true"
                               />
 
-                              <div className="relative bg-white">
+                              <div className="relative z-20 bg-white">
                                 <div className="mx-auto max-w-7xl px-8">
                                   <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                                     <div className="col-start-2 grid grid-cols-2 gap-x-8">
@@ -442,12 +479,19 @@ export default function Navigation() {
                                                 key={item.name}
                                                 className="flex"
                                               >
-                                                <a
-                                                  href={item.href}
-                                                  className="hover:text-gray-800"
+                                                <p
+                                                  onClick={() =>
+                                                    handleCategoryClick(
+                                                      category,
+                                                      section,
+                                                      item,
+                                                      close
+                                                    )
+                                                  }
+                                                  className="cursor-pointer hover:text-gray-800"
                                                 >
                                                   {item.name}
-                                                </a>
+                                                </p>
                                               </li>
                                             ))}
                                           </ul>
@@ -477,35 +521,8 @@ export default function Navigation() {
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a
-                    href="google.com"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Sign in
-                  </a>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a
-                    href="google.com"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Create account
-                  </a>
-                </div>
-
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a
-                    href="google.com"
-                    className="flex items-center text-gray-700 hover:text-gray-800"
-                  >
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
+                <div className="">
+                  <UserAvatar />
                 </div>
 
                 {/* Search */}
