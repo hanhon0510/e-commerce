@@ -65,11 +65,7 @@ export default function UserAvatar() {
         >
           R
         </Avatar>
-        {/* <Button
-         
-        >
-          Dashboard
-        </Button> */}
+
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -77,6 +73,7 @@ export default function UserAvatar() {
           placement="bottom-start"
           transition
           disablePortal
+          className="z-20"
         >
           {({ TransitionProps, placement }) => (
             <Grow
