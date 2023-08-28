@@ -19,6 +19,7 @@ import {
   Popper,
 } from "@mui/material";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import AuthModal from "../../Auth/AuthModal";
 // import { navigationData } from "./navigationData";
 
 function classNames(...classes) {
@@ -159,7 +160,7 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  const [openAuthModel, setOpenAuthModel] = useState(false);
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const openUserMenu = Boolean(anchorEl);
   const jwt = localStorage.getItem("jwt");
@@ -171,10 +172,10 @@ export default function Navigation() {
     setAnchorEl(null);
   };
   const handleOpen = () => {
-    setOpenAuthModel(true);
+    setOpenAuthModal(true);
   };
   const handleClose = () => {
-    setOpenAuthModel(false);
+    setOpenAuthModal(false);
   };
 
   const handleCategoryClick = (category, section, item, close) => {
@@ -519,10 +520,21 @@ export default function Navigation() {
                   ))}
                 </div>
               </Popover.Group>
-
               <div className="ml-auto flex items-center">
-                <div className="">
-                  <UserAvatar />
+                {/* hidden */}
+                <div className=" lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  {false ? (
+                    <div className="">
+                      <UserAvatar />
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium text-gray-400 hover:text-gray-800"
+                    >
+                      Signin
+                    </Button>
+                  )}
                 </div>
 
                 {/* Search */}
@@ -560,6 +572,7 @@ export default function Navigation() {
           </div>
         </nav>
       </header>
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 }
