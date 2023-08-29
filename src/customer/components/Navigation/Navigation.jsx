@@ -7,17 +7,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
-import {
-  Avatar,
-  Box,
-  Button,
-  ClickAwayListener,
-  Grow,
-  MenuItem,
-  MenuList,
-  Paper,
-  Popper,
-} from "@mui/material";
+import { Button } from "@mui/material";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import AuthModal from "../../Auth/AuthModal";
 // import { navigationData } from "./navigationData";
