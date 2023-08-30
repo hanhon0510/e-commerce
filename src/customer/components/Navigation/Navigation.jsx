@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -6,10 +6,13 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import AuthModal from "../../Auth/AuthModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, logout } from "../../../State/Auth/Action";
+import { deepPurple, purple } from "@mui/material/colors";
 // import { navigationData } from "./navigationData";
 
 function classNames(...classes) {
@@ -154,6 +157,9 @@ export default function Navigation() {
   const [anchorEl, setAnchorEl] = useState(false);
   const openUserMenu = Boolean(anchorEl);
   const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector((store) => store);
+  const dispatch = useDispatch();
+  const location = useLocation();
 
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -171,6 +177,26 @@ export default function Navigation() {
   const handleCategoryClick = (category, section, item, close) => {
     navigate(`/${category.id}/${section.id}/${item.id}`);
     close();
+  };
+
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getUser(jwt));
+    }
+  }, [jwt, auth.jwt]);
+
+  useEffect(() => {
+    if (auth.user) {
+      handleClose();
+    }
+    if (location.pathname === "/login" || location.pathname === "/register") {
+      navigate(-1);
+    }
+  }, [auth.user]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    handleCloseUserMenu();
   };
 
   return (
@@ -513,16 +539,54 @@ export default function Navigation() {
               <div className="ml-auto flex items-center">
                 {/* hidden */}
                 <div className=" lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {false ? (
-                    <div className="">
-                      <UserAvatar />
+                  {auth.user?.firstName ? (
+                    <div>
+                      {/* <UserAvatar /> */}
+                      <Avatar
+                        className="text-white"
+                        onClick={handleUserClick}
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        sx={{
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {auth.user?.firstName[0].toUpperCase()}
+                      </Avatar>
+
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+
+                        <MenuItem
+                          onClick={() => {
+                            navigate("/account/order");
+                          }}
+                        >
+                          My Orders
+                        </MenuItem>
+
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                      </Menu>
                     </div>
                   ) : (
                     <Button
                       onClick={handleOpen}
                       className="text-sm font-medium text-gray-400 hover:text-gray-800"
                     >
-                      Signin
+                      Sign in
                     </Button>
                   )}
                 </div>
