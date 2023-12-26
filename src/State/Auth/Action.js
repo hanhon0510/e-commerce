@@ -6,11 +6,11 @@ import {
   GET_USER_SUCCESS,
   LOGIN_FAILURE,
   LOGIN_REQUEST,
+  lOGIN_SUCCESS,
   LOGOUT,
   REGISTER_FAILURE,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
-  lOGIN_SUCCESS,
 } from "./ActionType";
 
 const token = localStorage.getItem("jwt");
