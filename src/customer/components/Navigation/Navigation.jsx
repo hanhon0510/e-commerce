@@ -47,7 +47,7 @@ const navigationData = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { id: "top", name: "Tops", href: "#" },
+            { id: "shirt", name: "Shirt", href: "#" },
             { id: "dress", name: "Dresses", href: "#" },
             { id: "pant", name: "Pants", href: "#" },
             { id: "denim", name: "Denim", href: "#" },
@@ -109,7 +109,7 @@ const navigationData = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { id: "tops", name: "Tops", href: "#" },
+            { id: "shirt", name: "Shirt", href: "#" },
             { id: "pants", name: "Pants", href: "#" },
             { id: "sweaters", name: "Sweaters", href: "#" },
             { id: "t-shirts", name: "T-Shirts", href: "#" },
