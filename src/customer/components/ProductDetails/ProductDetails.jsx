@@ -73,7 +73,6 @@ export default function ProductDetails() {
 
   // console.log("params", params);
   // console.log("image", products);
-
   const handleAddToCart = () => {
     const data = { productId: params.productId, size: selectedSize.name };
 

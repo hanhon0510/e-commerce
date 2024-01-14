@@ -14,13 +14,13 @@ import {
 } from "./ActionType";
 import { api } from "../../config/apiConfig";
 
-// getCart
-export const get = () => async (dispatch) => {
+export const getCart = () => async (dispatch) => {
   dispatch({ type: GET_CART_REQUEST });
 
   try {
     const { data } = await api.get(`/api/cart/`);
     dispatch({ type: GET_CART_SUCCESS, payload: data });
+    console.log("cart: ", data);
   } catch (error) {
     dispatch({ type: GET_CART_FAILURE, payload: error.message });
   }
