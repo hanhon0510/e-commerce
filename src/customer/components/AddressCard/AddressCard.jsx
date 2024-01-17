@@ -5,7 +5,7 @@ const AddressCard = ({ address }) => {
     <div>
       <div className="space-y-3">
         <p className="font-semibold">
-          {address?.firstName} + " " + {address?.lastName}
+          {address?.firstName} {address?.lastName}
         </p>
         <p>
           {address?.state}, {address?.streetAddress}, {address?.zipCode}
