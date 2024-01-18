@@ -10,15 +10,15 @@ import OrderDetails from "./customer/components/Order/OrderDetails";
 import Product from "./customer/components/Product/Product";
 import ProductDetails from "./customer/components/ProductDetails/ProductDetails";
 import CustomerRouters from "./Routers/CustomerRouters";
+import AdminRouters from "./Routers/AdminRouters";
 
 function App() {
   return (
     <div className="">
       <Routes>
-        <Route path="/*" element={<CustomerRouters />}></Route>
+        <Route path="/*" element={<CustomerRouters />} />
+        <Route path="/admin/*" element={<AdminRouters />} />
       </Routes>
-      {/* <div></div> */}
-      {/* <Navigation /> */}
     </div>
   );
 }
