@@ -1,24 +1,33 @@
-import { useTheme } from "@emotion/react";
-import InboxIcon from "@mui/icons-material/InboxIcon";
+import InboxIcon from "@mui/icons-material/Inbox";
 import {
   Box,
+  CssBaseline,
+  Drawer,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
+  ListItemText,
   Toolbar,
   useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const menu = [
-  { name: "Dashboard", path: "/admin" },
-  { name: "Products", path: "/admin/products" },
-  { name: "Customers", path: "/admin/customers" },
-  { name: "Orders", path: "/admin/orders" },
-  { name: "AddProduct", path: "/admin/product/create" },
+  { name: "Dashboard", path: "/admin", icon: <DashboardIcon /> },
+  { name: "Products", path: "/admin/products", icon: <DashboardIcon /> },
+  { name: "Customers", path: "/admin/customers", icon: <DashboardIcon /> },
+  { name: "Orders", path: "/admin/orders", icon: <DashboardIcon /> },
+  {
+    name: "AddProduct",
+    path: "/admin/product/create",
+    icon: <DashboardIcon />,
+  },
   // { name: "", path: "" },
 ];
 
@@ -35,27 +44,64 @@ const Admin = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        // border: "1px solid blue",
+        height: "100%",
       }}
     >
-      {isLargeScreen && <Toolbar />}
+      <>
+        {/* {isLargeScreen && <Toolbar />} */}
+        <List>
+          {menu.map((item, index) => (
+            <ListItem
+              key={item.name}
+              disablePadding
+              onClick={() => navigate(item.path)}
+            >
+              <ListItemButton>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText>{item.name}</ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </>
+
       <List>
-        {menu.map((item, index) => (
-          <ListItem
-            key={item.name}
-            disablePadding
-            onClick={() => navigate(item.path)}
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <EmailIcon />}
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <AccountCircleIcon />
+              <ListItemText>Account</ListItemText>
+            </ListItemIcon>
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
-  return <div></div>;
+  return (
+    <div>
+      <Box
+        sx={{
+          display: `${isLargeScreen} ? "flex" : "block"`,
+        }}
+      >
+        <CssBaseline />
+        <Drawer
+          // anchor={anchor}
+          // open={state[anchor]}
+          // onClose={toggleDrawer(anchor, false)}
+          variant="permanent"
+          sx={{
+            height: "100vh",
+            width: 260,
+            flexShrink: 0,
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </div>
+  );
 };
 
 export default Admin;
