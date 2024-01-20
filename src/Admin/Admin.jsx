@@ -13,10 +13,16 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Dashboard from "./components/Dashboard";
+import CreateProductForm from "./components/CreateProductForm";
+import ProductsTable from "./components/ProductsTable";
+import OrdersTable from "./components/OrdersTable";
+import CustomersTable from "./components/CustomersTable";
+import AdminDashboard from "./components/Dashboard";
 
 const menu = [
   { name: "Dashboard", path: "/admin", icon: <DashboardIcon /> },
@@ -80,26 +86,23 @@ const Admin = () => {
   );
   return (
     <div>
-      <Box
-        sx={{
-          display: `${isLargeScreen} ? "flex" : "block"`,
-        }}
-      >
+      <div className="flex h-[100vh]">
         <CssBaseline />
-        <Drawer
-          // anchor={anchor}
-          // open={state[anchor]}
-          // onClose={toggleDrawer(anchor, false)}
-          variant="permanent"
-          sx={{
-            height: "100vh",
-            width: 260,
-            flexShrink: 0,
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
+        <div className="w-[15%] border border-r-gray-300 h-full">{drawer}</div>
+
+        <div className="w-[85%]">
+          <Routes>
+            <Route path="/" element={<AdminDashboard />}></Route>
+            <Route
+              path="/product/create"
+              element={<CreateProductForm />}
+            ></Route>
+            <Route path="/products" element={<ProductsTable />}></Route>
+            <Route path="/orders" element={<OrdersTable />}></Route>
+            <Route path="/customers" element={<CustomersTable />}></Route>
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 };
