@@ -104,7 +104,6 @@ export default function Product() {
       pageSize: 1,
       stock: stock,
     };
-    console.log("param:", param);
     dispatch(findProducts(data));
   }, [
     param.levelThree,
