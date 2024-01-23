@@ -12,13 +12,18 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { findProducts } from "../../State/Product/Action";
+import { deleteProduct, findProducts } from "../../State/Product/Action";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductsTable = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store);
   console.log("products: ", products);
+
+  const handleProductDelete = (productId) => {
+    dispatch(deleteProduct(productId));
+  };
+
   useEffect(() => {
     const data = {
       category: "shirt",
@@ -29,11 +34,11 @@ const ProductsTable = () => {
       minDiscount: 0,
       sort: "price_low",
       pageNumber: 0,
-      pageSize: 5,
+      pageSize: 10,
       stock: "",
     };
     dispatch(findProducts(data));
-  }, []);
+  }, [products.deletedProduct]);
   const rows = [];
 
   return (
@@ -69,7 +74,12 @@ const ProductsTable = () => {
                   <TableCell align="left">{item.price}</TableCell>
                   <TableCell align="left">{item.quantity}</TableCell>
                   <TableCell align="left">
-                    <Button variant="outlined">Delete</Button>
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleProductDelete(item.id)}
+                    >
+                      Delete
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
