@@ -62,8 +62,9 @@ const CreateProductForm = () => {
     e.preventDefault();
     dispatch(createProduct(productData));
   };
+
   return (
-    <div className="">
+    <div className="p-10">
       <Typography
         variant="h3"
         sx={{ textAlign: "center" }}
