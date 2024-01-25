@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrders } from "../../State/Admin/Order/Action";
 
 const OrdersTable = () => {
-  return (
-    <div>OrdersTable</div>
-  )
-}
+  const dispatch = useDispatch();
+  const { adminOrder } = useSelector((store) => store);
 
-export default OrdersTable
+  useEffect(() => {
+    dispatch(getOrders());
+  }, []);
+  console.log("admin order:", adminOrder);
+
+  return <div>OrdersTable</div>;
+};
+
+export default OrdersTable;
