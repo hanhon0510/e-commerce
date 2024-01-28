@@ -72,7 +72,7 @@ const renderStats = () => {
   ));
 };
 
-const MonthlyOverView = () => {
+const MonthlyOverview = () => {
   return (
     <Card>
       <CardHeader
@@ -107,4 +107,4 @@ const MonthlyOverView = () => {
   );
 };
 
-export default MonthlyOverView;
+export default MonthlyOverview;

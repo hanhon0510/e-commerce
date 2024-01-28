@@ -50,7 +50,6 @@ const Admin = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        // border: "1px solid blue",
         height: "100%",
       }}
     >
@@ -96,6 +95,10 @@ const Admin = () => {
           <Routes>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/product/create" element={<CreateProductForm />} />
+            <Route
+              path="/product/update/:productId"
+              element={<CreateProductForm />}
+            />
             <Route path="/products" element={<ProductsTable />} />
             <Route path="/orders" element={<OrdersTable />} />
             <Route path="/customers" element={<CustomersTable />} />

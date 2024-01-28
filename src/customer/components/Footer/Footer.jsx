@@ -112,15 +112,7 @@ const Footer = () => {
             Tran Minh Hieu
           </Typography>
           <Typography variant="body2" component="p" align="center">
-            Icons made by{" "}
-            <Link
-              href="https://www.freepik.com"
-              color="inherit"
-              underline="always"
-            >
-              Freepik
-            </Link>{" "}
-            from{" "}
+            Icons made from{" "}
             <Link
               href="https://www.flaticon.com/"
               color="inherit"
