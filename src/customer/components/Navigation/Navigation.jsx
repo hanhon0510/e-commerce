@@ -13,141 +13,142 @@ import AuthModal from "../../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, logout } from "../../../State/Auth/Action";
 import { deepPurple, purple } from "@mui/material/colors";
-// import { navigationData } from "./navigationData";
+import { getCart } from "../../../State/Cart/Action";
+import { navigationData } from "./navigationData";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const navigationData = {
-  categories: [
-    {
-      id: "women",
-      name: "Women",
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
-          imageAlt:
-            "Models sitting back to back, wearing Basic Tee in black and bone.",
-        },
-        {
-          name: "Basic Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-          imageAlt:
-            "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { id: "shirt", name: "Shirt", href: "#" },
-            { id: "dress", name: "Dresses", href: "#" },
-            { id: "pant", name: "Pants", href: "#" },
-            { id: "denim", name: "Denim", href: "#" },
-            { id: "sweater", name: "Sweaters", href: "#" },
-            { id: "tshirt", name: "T-Shirts", href: "#" },
-            { id: "jacket", name: "Jackets", href: "#" },
-            { id: "activewear", name: "Activewear", href: "#" },
-            { id: "all", name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { id: "watch", name: "Watches", href: "#" },
-            { id: "wallet", name: "Wallets", href: "#" },
-            { id: "bag", name: "Bags", href: "#" },
-            { id: "sunglasses", name: "Sunglasses", href: "#" },
-            { id: "hat", name: "Hats", href: "#" },
-            { id: "belt", name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { id: "full-nelson", name: "Full Nelson", href: "#" },
-            { id: "my-way", name: "My Way", href: "#" },
-            { id: "re-arranged", name: "Re-Arranged", href: "#" },
-            { id: "counterfeit", name: "Counterfeit", href: "#" },
-            { id: "significant-other", name: "Significant Other", href: "#" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "men",
-      name: "Men",
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Artwork Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { id: "shirt", name: "Shirt", href: "#" },
-            { id: "pants", name: "Pants", href: "#" },
-            { id: "sweaters", name: "Sweaters", href: "#" },
-            { id: "t-shirts", name: "T-Shirts", href: "#" },
-            { id: "jackets", name: "Jackets", href: "#" },
-            { id: "activewear", name: "Activewear", href: "#" },
-            { id: "browse-all", name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { id: "watch", name: "Watches", href: "#" },
-            { id: "wallet", name: "Wallets", href: "#" },
-            { id: "bag", name: "Bags", href: "#" },
-            { id: "sunglasses", name: "Sunglasses", href: "#" },
-            { id: "hat", name: "Hats", href: "#" },
-            { id: "belt", name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { id: "re-arranged", name: "Re-Arranged", href: "#" },
-            { id: "counterfeit", name: "Counterfeit", href: "#" },
-            { id: "full-nelson", name: "Full Nelson", href: "#" },
-            { id: "my-way", name: "My Way", href: "#" },
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: "Company", href: "#" },
-    { name: "Stores", href: "#" },
-  ],
-};
+// const navigationData = {
+//   categories: [
+//     {
+//       id: "women",
+//       name: "Women",
+//       featured: [
+//         {
+//           name: "New Arrivals",
+//           href: "#",
+//           imageSrc:
+//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+//           imageAlt:
+//             "Models sitting back to back, wearing Basic Tee in black and bone.",
+//         },
+//         {
+//           name: "Basic Tees",
+//           href: "#",
+//           imageSrc:
+//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+//           imageAlt:
+//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
+//         },
+//       ],
+//       sections: [
+//         {
+//           id: "clothing",
+//           name: "Clothing",
+//           items: [
+//             { id: "shirt", name: "Shirt", href: "#" },
+//             { id: "dress", name: "Dresses", href: "#" },
+//             { id: "pant", name: "Pants", href: "#" },
+//             { id: "denim", name: "Denim", href: "#" },
+//             { id: "sweater", name: "Sweaters", href: "#" },
+//             { id: "tshirt", name: "T-Shirts", href: "#" },
+//             { id: "jacket", name: "Jackets", href: "#" },
+//             { id: "activewear", name: "Activewear", href: "#" },
+//             { id: "all", name: "Browse All", href: "#" },
+//           ],
+//         },
+//         {
+//           id: "accessories",
+//           name: "Accessories",
+//           items: [
+//             { id: "watch", name: "Watches", href: "#" },
+//             { id: "wallet", name: "Wallets", href: "#" },
+//             { id: "bag", name: "Bags", href: "#" },
+//             { id: "sunglasses", name: "Sunglasses", href: "#" },
+//             { id: "hat", name: "Hats", href: "#" },
+//             { id: "belt", name: "Belts", href: "#" },
+//           ],
+//         },
+//         {
+//           id: "brands",
+//           name: "Brands",
+//           items: [
+//             { id: "full-nelson", name: "Full Nelson", href: "#" },
+//             { id: "my-way", name: "My Way", href: "#" },
+//             { id: "re-arranged", name: "Re-Arranged", href: "#" },
+//             { id: "counterfeit", name: "Counterfeit", href: "#" },
+//             { id: "significant-other", name: "Significant Other", href: "#" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       id: "men",
+//       name: "Men",
+//       featured: [
+//         {
+//           name: "New Arrivals",
+//           href: "#",
+//           imageSrc:
+//             "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+//           imageAlt:
+//             "Drawstring top with elastic loop closure and textured interior padding.",
+//         },
+//         {
+//           name: "Artwork Tees",
+//           href: "#",
+//           imageSrc:
+//             "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
+//           imageAlt:
+//             "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+//         },
+//       ],
+//       sections: [
+//         {
+//           id: "clothing",
+//           name: "Clothing",
+//           items: [
+//             { id: "shirt", name: "Shirt", href: "#" },
+//             { id: "pants", name: "Pants", href: "#" },
+//             { id: "sweaters", name: "Sweaters", href: "#" },
+//             { id: "t-shirts", name: "T-Shirts", href: "#" },
+//             { id: "jackets", name: "Jackets", href: "#" },
+//             { id: "activewear", name: "Activewear", href: "#" },
+//             { id: "browse-all", name: "Browse All", href: "#" },
+//           ],
+//         },
+//         {
+//           id: "accessories",
+//           name: "Accessories",
+//           items: [
+//             { id: "watch", name: "Watches", href: "#" },
+//             { id: "wallet", name: "Wallets", href: "#" },
+//             { id: "bag", name: "Bags", href: "#" },
+//             { id: "sunglasses", name: "Sunglasses", href: "#" },
+//             { id: "hat", name: "Hats", href: "#" },
+//             { id: "belt", name: "Belts", href: "#" },
+//           ],
+//         },
+//         {
+//           id: "brands",
+//           name: "Brands",
+//           items: [
+//             { id: "re-arranged", name: "Re-Arranged", href: "#" },
+//             { id: "counterfeit", name: "Counterfeit", href: "#" },
+//             { id: "full-nelson", name: "Full Nelson", href: "#" },
+//             { id: "my-way", name: "My Way", href: "#" },
+//           ],
+//         },
+//       ],
+//     },
+//   ],
+//   pages: [
+//     { name: "Company", href: "#" },
+//     { name: "Stores", href: "#" },
+//   ],
+// };
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -160,6 +161,7 @@ export default function Navigation() {
   const { auth } = useSelector((store) => store);
   const dispatch = useDispatch();
   const location = useLocation();
+  const { cart } = useSelector((store) => store);
 
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -194,13 +196,17 @@ export default function Navigation() {
     }
   }, [auth.user]);
 
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
+
   const handleLogout = () => {
     dispatch(logout());
     handleCloseUserMenu();
   };
 
   return (
-    <div className="bg-white pb-10">
+    <div className="bg-white pb-10  z-10">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -377,9 +383,9 @@ export default function Navigation() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        {/* <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Get free delivery on orders over $100
-        </p>
+        </p> */}
 
         <nav
           aria-label="Top"
@@ -536,6 +542,7 @@ export default function Navigation() {
                   ))}
                 </div>
               </Popover.Group>
+              {/* <div className="ml-10 flex items-center bg-slate-800"> */}
               <div className="ml-auto flex items-center">
                 {/* hidden */}
                 <div className=" lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
@@ -607,8 +614,8 @@ export default function Navigation() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a
-                    href="google.com"
+                  <button
+                    onClick={() => navigate("/cart")}
                     className="group -m-2 flex items-center p-2"
                   >
                     <ShoppingBagIcon
@@ -619,7 +626,7 @@ export default function Navigation() {
                       0
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
