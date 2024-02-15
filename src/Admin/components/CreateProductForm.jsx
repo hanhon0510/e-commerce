@@ -14,8 +14,8 @@ import {
 
 const initialSizes = [
   { name: "S", quantity: 0 },
-  { name: "L", quantity: 0 },
   { name: "M", quantity: 0 },
+  { name: "L", quantity: 0 },
 ];
 
 const CreateProductForm = () => {

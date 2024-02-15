@@ -30,7 +30,7 @@ const menu = [
   { name: "Customers", path: "/admin/customers", icon: <DashboardIcon /> },
   { name: "Orders", path: "/admin/orders", icon: <DashboardIcon /> },
   {
-    name: "AddProduct",
+    name: "Add new product",
     path: "/admin/product/create",
     icon: <DashboardIcon />,
   },
