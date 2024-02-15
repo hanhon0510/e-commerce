@@ -404,12 +404,8 @@ export default function Navigation() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <span className="sr-only">Your Company</span>
-                <img
-                  className="h-8 w-8 mr-2 "
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
-                />
+                <span className="sr-only"></span>
+                <img className="h-8 w-8 mr-2 " src="/tshirt.png" alt="" />
               </div>
 
               {/* Flyout menus */}
