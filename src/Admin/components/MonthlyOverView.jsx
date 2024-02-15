@@ -1,4 +1,4 @@
-import { AccountBoxOutlined, TrendingUp } from "@mui/icons-material";
+import { TrendingUp } from "@mui/icons-material";
 import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SettingsCellIcon from "@mui/icons-material/SettingsCell";

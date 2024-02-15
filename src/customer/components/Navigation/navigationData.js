@@ -42,17 +42,17 @@ export const navigationData = {
             { id: "belt", name: "Belts", href: "#" },
           ],
         },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { id: "full-nelson", name: "Full Nelson", href: "#" },
-            { id: "my-way", name: "My Way", href: "#" },
-            { id: "re-arranged", name: "Re-Arranged", href: "#" },
-            { id: "counterfeit", name: "Counterfeit", href: "#" },
-            { id: "significant-other", name: "Significant Other", href: "#" },
-          ],
-        },
+        // {
+        //   id: "brands",
+        //   name: "Brands",
+        //   items: [
+        //     { id: "full-nelson", name: "Full Nelson", href: "#" },
+        //     { id: "my-way", name: "My Way", href: "#" },
+        //     { id: "re-arranged", name: "Re-Arranged", href: "#" },
+        //     { id: "counterfeit", name: "Counterfeit", href: "#" },
+        //     { id: "significant-other", name: "Significant Other", href: "#" },
+        //   ],
+        // },
       ],
     },
     {
@@ -98,16 +98,16 @@ export const navigationData = {
             { id: "tie", name: "Ties", href: "#" },
           ],
         },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { id: "re-arranged", name: "Re-Arranged", href: "#" },
-            { id: "counterfeit", name: "Counterfeit", href: "#" },
-            { id: "full-nelson", name: "Full Nelson", href: "#" },
-            { id: "my-way", name: "My Way", href: "#" },
-          ],
-        },
+        // {
+        //   id: "brands",
+        //   name: "Brands",
+        //   items: [
+        //     { id: "re-arranged", name: "Re-Arranged", href: "#" },
+        //     { id: "counterfeit", name: "Counterfeit", href: "#" },
+        //     { id: "full-nelson", name: "Full Nelson", href: "#" },
+        //     { id: "my-way", name: "My Way", href: "#" },
+        //   ],
+        // },
       ],
     },
   ],

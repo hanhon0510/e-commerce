@@ -105,6 +105,7 @@ export default function Product() {
       stock: stock,
     };
     dispatch(findProducts(data));
+    console.log("reqdata:", data);
   }, [
     param.levelThree,
     colorValue,

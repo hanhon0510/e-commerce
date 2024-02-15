@@ -41,6 +41,7 @@ export const findProducts = (reqData) => async (dispatch) => {
     dispatch({ type: FIND_PRODUCTS_FAILURE, payload: error.message });
   }
 };
+
 export const findProductsById = (reqData) => async (dispatch) => {
   dispatch({ type: FIND_PRODUCT_BY_ID_REQUEST });
 
