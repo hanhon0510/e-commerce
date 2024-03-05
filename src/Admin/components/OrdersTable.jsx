@@ -48,7 +48,6 @@ const OrdersTable = () => {
     adminOrder.delivered,
     adminOrder.deletedOrder,
   ]);
-  // console.log("admin order:", adminOrder);
 
   const handleShippedOrder = (orderId) => {
     dispatch(shipOrder(orderId));

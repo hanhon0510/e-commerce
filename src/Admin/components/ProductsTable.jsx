@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 const ProductsTable = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store);
-  console.log("products: ", products);
+  // console.log("products: ", products);
 
   const handleProductDelete = (productId) => {
     dispatch(deleteProduct(productId));

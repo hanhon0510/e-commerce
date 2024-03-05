@@ -27,7 +27,7 @@ const LoginForm = () => {
 
     dispatch(login(userData));
 
-    console.log("user data", userData);
+    // console.log("user data", userData);
   };
 
   return (
@@ -51,6 +51,7 @@ const LoginForm = () => {
               name="password"
               label="Password"
               fullWidth
+              type="password"
               autoComplete="password"
             />
           </Grid>

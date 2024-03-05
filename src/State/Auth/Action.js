@@ -12,6 +12,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from "./ActionType";
+// import { useNavigate } from "react-router-dom";
 
 const token = localStorage.getItem("jwt");
 
@@ -28,7 +29,7 @@ export const register = (userData) => async (dispatch) => {
     if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
     }
-    console.log("user", user);
+    // console.log("user", user);
 
     dispatch(registerSuccess(user.jwt));
   } catch (error) {
@@ -41,6 +42,8 @@ const loginSuccess = (user) => ({ type: lOGIN_SUCCESS, payload: user });
 const loginFailure = (error) => ({ type: LOGIN_FAILURE, payload: error });
 
 export const login = (userData) => async (dispatch) => {
+  // const navigate = useNavigate();
+
   dispatch(loginRequest());
 
   try {
@@ -50,7 +53,11 @@ export const login = (userData) => async (dispatch) => {
     if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
     }
-    console.log("user", user);
+    // console.log("user", user);
+
+    // if (user.role === "admin") {
+    //   navigate("/admin");
+    // }
 
     dispatch(loginSuccess(user.jwt));
   } catch (error) {
@@ -70,7 +77,7 @@ export const getUser = (jwt) => async (dispatch) => {
       headers: { Authorization: `Bearer ${jwt}` },
     });
     const user = response.data;
-    console.log("user", user);
+    // console.log("get user", user);
     dispatch(getUserSuccess(user));
   } catch (error) {
     dispatch(getUserFailure(error.message));

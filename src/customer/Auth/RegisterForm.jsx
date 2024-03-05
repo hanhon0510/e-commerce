@@ -30,9 +30,10 @@ const RegisterForm = () => {
       lastName: data.get("lastName"),
       email: data.get("email"),
       password: data.get("password"),
+      role: "user",
     };
     dispatch(register(userData));
-    console.log("user data", userData);
+    // console.log("user data", userData);
   };
 
   return (
@@ -76,6 +77,7 @@ const RegisterForm = () => {
               name="password"
               label="Password"
               fullWidth
+              type="password"
               autoComplete="password"
             />
           </Grid>

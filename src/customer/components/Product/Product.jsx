@@ -101,11 +101,11 @@ export default function Product() {
       minDiscount: discount || 0,
       sort: sortValue || "price_low",
       pageNumber: pageNumber - 1,
-      pageSize: 5,
+      pageSize: 8,
       stock: stock,
     };
     dispatch(findProducts(data));
-    console.log("reqdata:", data);
+    // console.log("reqdata:", data);
   }, [
     param.levelThree,
     colorValue,

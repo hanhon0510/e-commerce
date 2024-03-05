@@ -9,7 +9,7 @@ import {
 } from "./ActionType";
 
 export const createOrder = (reqData) => async (dispatch) => {
-  console.log("req data: " + reqData);
+  // console.log("req data: " + reqData);
 
   dispatch({ type: CREATE_ORDER_REQUEST });
   try {
@@ -18,10 +18,10 @@ export const createOrder = (reqData) => async (dispatch) => {
     if (data.id) {
       reqData.navigate({ search: `step=3&order_id=${data.id}` });
     }
-    console.log("created order ", data);
+    // console.log("created order ", data);
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (error) {
-    console.log("Catch error: ", error);
+    // console.log("Catch error: ", error);
     dispatch({ type: CREATE_ORDER_FAILURE, payload: error.message });
   }
 };
@@ -31,7 +31,7 @@ export const getOrderById = (orderId) => async (dispatch) => {
 
   try {
     const data = await api.get(`/api/orders/${orderId}`);
-    console.log("get order by id: ", data);
+    // console.log("get order by id: ", data);
     dispatch({
       type: GET_ORDER_BY_ID_SUCCESS,
       payload: data,

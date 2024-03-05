@@ -156,6 +156,7 @@ export default function Navigation() {
 
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
+  const [hasNavigatedToAdmin, setHasNavigatedToAdmin] = useState(false);
   const openUserMenu = Boolean(anchorEl);
   const jwt = localStorage.getItem("jwt");
   const { auth } = useSelector((store) => store);
@@ -383,10 +384,6 @@ export default function Navigation() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        {/* <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
-        </p> */}
-
         <nav
           aria-label="Top"
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -572,7 +569,6 @@ export default function Navigation() {
                         <MenuItem onClick={handleCloseUserMenu}>
                           Profile
                         </MenuItem>
-
                         <MenuItem
                           onClick={() => {
                             navigate("/account/order");
@@ -580,6 +576,15 @@ export default function Navigation() {
                         >
                           My Orders
                         </MenuItem>
+                        {auth.user?.role === "admin" && (
+                          <MenuItem
+                            onClick={() => {
+                              navigate("/admin");
+                            }}
+                          >
+                            Admin Dashboard
+                          </MenuItem>
+                        )}
 
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>

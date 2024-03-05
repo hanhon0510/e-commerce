@@ -22,7 +22,7 @@ export const getOrders = () => async (dispatch) => {
 
   try {
     const { data } = await api.get("/api/admin/orders/");
-    console.log("get all orders: ", data);
+    // console.log("get all orders: ", data);
     dispatch({ type: GET_ORDERS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_ORDERS_FAILURE, payload: error.message });
@@ -34,7 +34,7 @@ export const confirmOrder = (orderId) => async (dispatch) => {
 
   try {
     const { data } = await api.put(`/api/admin/orders/${orderId}/confirmed`);
-    console.log("Confirm order: ", data);
+    // console.log("Confirm order: ", data);
     dispatch({ type: CONFIRMED_ORDER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: CONFIRMED_ORDER_FAILURE, payload: error.message });
@@ -45,7 +45,7 @@ export const shipOrder = (orderId) => async (dispatch) => {
   try {
     dispatch({ type: SHIP_ORDER_REQUEST });
     const { data } = await api.put(`/api/admin/orders/${orderId}/ship`);
-    console.log("ship order: ", data);
+    // console.log("ship order: ", data);
     dispatch({ type: SHIP_ORDER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: SHIP_ORDER_FAILURE, payload: error.message });
@@ -57,7 +57,7 @@ export const deliveredOrder = (orderId) => async (dispatch) => {
 
   try {
     const { data } = await api.put(`/api/admin/orders/${orderId}/deliver`);
-    console.log("Delivered order: ", data);
+    // console.log("Delivered order: ", data);
     dispatch({ type: DELIVERED_ORDER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: DELIVERED_ORDER_FAILURE, payload: error.message });
@@ -69,7 +69,7 @@ export const deleteOrder = (orderId) => async (dispatch) => {
 
   try {
     const { data } = await api.put(`/api/admin/orders/${orderId}/delete`);
-    console.log("Delete order: ", data);
+    // console.log("Delete order: ", data);
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: DELETE_ORDER_FAILURE, payload: error.message });
