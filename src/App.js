@@ -11,13 +11,16 @@ import Product from "./customer/components/Product/Product";
 import ProductDetails from "./customer/components/ProductDetails/ProductDetails";
 import CustomerRouters from "./Routers/CustomerRouters";
 import AdminRouters from "./Routers/AdminRouters";
+import ProtectedRouters from "./Routers/ProtectedRouters";
 
 function App() {
   return (
     <div className="">
       <Routes>
         <Route path="/*" element={<CustomerRouters />} />
-        <Route path="/admin/*" element={<AdminRouters />} />
+        <Route element={<ProtectedRouters redirectPath="/" />}>
+          <Route path="/admin/*" element={<AdminRouters />} />
+        </Route>
       </Routes>
     </div>
   );
