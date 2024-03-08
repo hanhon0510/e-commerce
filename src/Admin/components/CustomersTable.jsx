@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import TableContainer from "@mui/material/TableContainer";
 import { Avatar, CardHeader, Pagination } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const rows = [
   {
@@ -102,6 +103,7 @@ const CustomersTable = () => {
   function handlePaginationChange(event, value) {
     // console.log("Current page:", value);
   }
+
   return (
     <Box>
       <Card>
@@ -118,7 +120,6 @@ const CustomersTable = () => {
             <TableHead>
               <TableRow>
                 <TableCell>User Id</TableCell>
-                <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
               </TableRow>
@@ -131,10 +132,7 @@ const CustomersTable = () => {
                   sx={{ "&:last-of-type td, &:last-of-type th": { border: 0 } }}
                 >
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell>
-                    {" "}
-                    <Avatar alt={item.name} src={item.image} />{" "}
-                  </TableCell>
+
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.email}</TableCell>
                 </TableRow>

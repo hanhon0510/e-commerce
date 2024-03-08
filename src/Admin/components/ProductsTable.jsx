@@ -18,15 +18,15 @@ import { useDispatch, useSelector } from "react-redux";
 const ProductsTable = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store);
-  // console.log("products: ", products);
 
   const handleProductDelete = (productId) => {
     dispatch(deleteProduct(productId));
+    // console.log("products: ", products);
   };
 
   useEffect(() => {
     const data = {
-      category: "shirt",
+      category: "",
       colors: [],
       sizes: [],
       minPrice: 0,

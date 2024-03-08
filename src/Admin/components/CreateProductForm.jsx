@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../State/Product/Action";
 import {
   Button,
@@ -11,6 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import CreateProductSuccessAlert from "./CreateProductSuccessAlert";
 
 const initialSizes = [
   { name: "S", quantity: 0 },
@@ -36,6 +37,7 @@ const CreateProductForm = () => {
   });
 
   const dispatch = useDispatch();
+  const { creating } = useSelector((store) => store.products);
   const jwt = localStorage.getItem("jwt");
 
   const handleChange = (e) => {
@@ -61,6 +63,10 @@ const CreateProductForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createProduct(productData));
+  };
+
+  const check = () => {
+    console.log("creating", creating);
   };
 
   return (
@@ -189,10 +195,11 @@ const CreateProductForm = () => {
                 onChange={handleChange}
                 label="Third Level Category"
               >
-                <MenuItem value="top">Top</MenuItem>
-                <MenuItem value="shirt">Shirt</MenuItem>
-                <MenuItem value="dress">Dress</MenuItem>
+                <MenuItem value="hoodies">Hoodies</MenuItem>
+                <MenuItem value="shirt">Shirts</MenuItem>
+                <MenuItem value="dress">Dresses</MenuItem>
                 <MenuItem value="jeans">Jeans</MenuItem>
+                <MenuItem value="shorts">Shorts</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -245,6 +252,9 @@ const CreateProductForm = () => {
           </Grid>
         </Grid>
       </form>
+      {creating && (
+        <CreateProductSuccessAlert isOpen={true} product={productData} />
+      )}
     </div>
   );
 };
