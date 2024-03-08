@@ -1,5 +1,9 @@
 # E-Commerce Full Stack Project
 
+# WearWell
+
+Where timeless style meets sustainable quality, outfitting your every day with fashion that feels as good as it looks.
+
 # Description
 
 A full-stack eCommerce application built with React and Spring Boot. The project focuses on delivering a streamlined and user-friendly shopping experience online, highlighted by a responsive interface and a broad variety of products.
@@ -18,6 +22,15 @@ https://github.com/hanhon0510/e-commerce-be
 - Manage products, categories, and orders through an admin panel.
 
 # Demo
+
+https://my-ecommerce-rouge.vercel.app/
+
+- Admin Account:
+  - Email: admin@gmail.com
+  - Password: 12345678
+- User Account:
+  - Email: hh@gmail.com
+  - Password: 12345678
 
 # Technologies used
 
