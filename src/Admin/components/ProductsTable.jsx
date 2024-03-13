@@ -11,18 +11,26 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { deleteProduct, findProducts } from "../../State/Product/Action";
 import { useDispatch, useSelector } from "react-redux";
+// import ConfirmDeleteProduct from "./ConfirmDeleteProduct";
 
 const ProductsTable = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store);
 
+  // const [deleteProduct, setDeleteProduct] = useState(false);
+
   const handleProductDelete = (productId) => {
+    // dispatch(deleteProduct(productId));
     dispatch(deleteProduct(productId));
     // console.log("products: ", products);
   };
+
+  // const openConfirm = () => {
+  //   setDeleteProduct(true);
+  // };
 
   useEffect(() => {
     const data = {
@@ -76,10 +84,18 @@ const ProductsTable = () => {
                   <TableCell align="left">
                     <Button
                       variant="outlined"
+                      //onClick={() => openConfirm()}
                       onClick={() => handleProductDelete(item.id)}
                     >
                       Delete
                     </Button>
+
+                    {/* {deleteProduct && (
+                      <ConfirmDeleteProduct
+                        isOpen={deleteProduct}
+                        productId={item.id}
+                      />
+                    )} */}
                   </TableCell>
                 </TableRow>
               ))}

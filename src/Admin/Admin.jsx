@@ -18,6 +18,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Dashboard from "./components/Dashboard";
+import HomeIcon from "@mui/icons-material/Home";
 import CreateProductForm from "./components/CreateProductForm";
 import ProductsTable from "./components/ProductsTable";
 import OrdersTable from "./components/OrdersTable";
@@ -25,6 +26,7 @@ import CustomersTable from "./components/CustomersTable";
 import AdminDashboard from "./components/Dashboard";
 
 const menu = [
+  { name: "Homepage", path: "/", icon: <HomeIcon /> },
   { name: "Dashboard", path: "/admin", icon: <DashboardIcon /> },
   { name: "Products", path: "/admin/products", icon: <DashboardIcon /> },
   { name: "Customers", path: "/admin/customers", icon: <DashboardIcon /> },
@@ -34,7 +36,6 @@ const menu = [
     path: "/admin/product/create",
     icon: <DashboardIcon />,
   },
-  // { name: "", path: "" },
 ];
 
 const Admin = () => {

@@ -11,7 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import CreateProductSuccessAlert from "./CreateProductSuccessAlert";
+// import CreateProductSuccessAlert from "./CreateProductSuccessAlert";
 
 const initialSizes = [
   { name: "S", quantity: 0 },
@@ -252,9 +252,9 @@ const CreateProductForm = () => {
           </Grid>
         </Grid>
       </form>
-      {creating && (
+      {/* {creating && (
         <CreateProductSuccessAlert isOpen={true} product={productData} />
-      )}
+      )} */}
     </div>
   );
 };

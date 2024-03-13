@@ -34,7 +34,7 @@ const CreateProductSuccessAlert = ({ isOpen = false, product }) => {
           <DialogContentText id="alert-dialog-description">
             Title: {product.title}
             <br />
-            Price: {product.price}
+            Price: {product.discountedPrice}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
