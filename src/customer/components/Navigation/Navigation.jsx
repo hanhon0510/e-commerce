@@ -52,6 +52,10 @@ export default function Navigation() {
     close();
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     if (jwt) {
       dispatch(getUser(jwt));
@@ -268,12 +272,18 @@ export default function Navigation() {
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
-              <div className="mr-4 flex lg:ml-0 text-gray-700 text-2xl font-medium">
+              <div
+                className="mr-4 flex lg:ml-0 text-gray-700 text-2xl font-medium cursor-pointer"
+                onClick={() => goHome()}
+              >
                 <h2>WearWell</h2>
               </div>
 
               {/* Logo */}
-              <div className="ml-8 flex lg:ml-0">
+              <div
+                className="ml-8 flex lg:ml-0 cursor-pointer"
+                onClick={() => goHome()}
+              >
                 <span className="sr-only"></span>
                 <img className="h-8 w-8 mr-2 " src="/tshirt.png" alt="" />
               </div>

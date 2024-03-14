@@ -413,14 +413,14 @@ export default function ProductDetails() {
         </section>
 
         {/* similar products */}
-        <section className="pt-10">
+        {/* <section className="pt-10">
           <h1 className="py-5 text-xl font-bold">Similar products</h1>
           <div className="flex flex-wrap space-y-5">
             {men_shirt.map((item) => (
               <HomeSectionCard product={item} />
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );
