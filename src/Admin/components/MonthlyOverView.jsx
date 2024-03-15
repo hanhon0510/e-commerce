@@ -42,27 +42,27 @@ const statsData = [
   },
 ];
 
-const DisplayStats = () => {
-  return statsData.map((stat, index) => (
-    <Grid item xs={12} sm={6} md={3} key={index}>
-      <Box display="flex" alignItems="center">
-        <Avatar
-          style={{
-            marginRight: "16px",
-            backgroundColor: stat.color,
-            color: "white",
-          }}
-        >
-          {stat.icon}
-        </Avatar>
-        <Box>
-          <Typography variant="subtitle2">{stat.label}</Typography>
-          <Typography variant="h6">{stat.value}</Typography>
-        </Box>
-      </Box>
-    </Grid>
-  ));
-};
+// const DisplayStats = () => {
+//   return statsData.map((stat, index) => (
+//     <Grid item xs={12} sm={6} md={3} key={index}>
+//       <Box display="flex" alignItems="center">
+//         <Avatar
+//           style={{
+//             marginRight: "16px",
+//             backgroundColor: stat.color,
+//             color: "white",
+//           }}
+//         >
+//           {stat.icon}
+//         </Avatar>
+//         <Box>
+//           <Typography variant="subtitle2">{stat.label}</Typography>
+//           <Typography variant="h6">{stat.value}</Typography>
+//         </Box>
+//       </Box>
+//     </Grid>
+//   ));
+// };
 
 const MonthlyOverview = () => {
   return (
@@ -78,7 +78,26 @@ const MonthlyOverview = () => {
       />
       <CardContent>
         <Grid container spacing={2}>
-          <DisplayStats />
+          {statsData.map((stat, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Box display="flex" alignItems="center">
+                <Avatar
+                  style={{
+                    marginRight: "16px",
+                    backgroundColor: stat.color,
+                    color: "white",
+                  }}
+                >
+                  {stat.icon}
+                </Avatar>
+                <Box>
+                  <Typography variant="subtitle2">{stat.label}</Typography>
+                  <Typography variant="h6">{stat.value}</Typography>
+                </Box>
+              </Box>
+            </Grid>
+          ))}
+          {/* <DisplayStats /> */}
         </Grid>
       </CardContent>
     </Card>
