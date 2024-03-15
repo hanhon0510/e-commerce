@@ -19,6 +19,9 @@ const AdminDashboard = () => {
         <Grid item xs={12} md={4}>
           <Achievement />
         </Grid>
+        <Grid item xs={12} md={8}>
+          <Achievement />
+        </Grid>
         {/* <Grid item xs={12} md={8}>
           <MonthlyOverview />
         </Grid> */}
