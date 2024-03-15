@@ -42,7 +42,7 @@ const statsData = [
   },
 ];
 
-function DisplayStats() {
+const DisplayStats = () => {
   return statsData.map((stat, index) => (
     <Grid item xs={12} sm={6} md={3} key={index}>
       <Box display="flex" alignItems="center">
@@ -62,9 +62,9 @@ function DisplayStats() {
       </Box>
     </Grid>
   ));
-}
+};
 
-function MonthlyOverview() {
+const MonthlyOverview = () => {
   return (
     <Card className="pt-6">
       <CardHeader
@@ -83,6 +83,6 @@ function MonthlyOverview() {
       </CardContent>
     </Card>
   );
-}
+};
 
 export default MonthlyOverview;
