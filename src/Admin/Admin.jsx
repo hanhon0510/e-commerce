@@ -1,23 +1,18 @@
-import InboxIcon from "@mui/icons-material/Inbox";
 import {
   Box,
   CssBaseline,
-  Drawer,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Toolbar,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import EmailIcon from "@mui/icons-material/Email";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Dashboard from "./components/Dashboard";
 import HomeIcon from "@mui/icons-material/Home";
 import CreateProductForm from "./components/CreateProductForm";
 import ProductsTable from "./components/ProductsTable";
