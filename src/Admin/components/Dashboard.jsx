@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import Achievement from "./Achievement";
-import MonthlyOverview from "./MonthlyOverview";
+// import MonthlyOverview from "./MonthlyOverview";
 import WeeklyOverview from "./WeeklyOverview";
 import OrderTableView from "../view/OrderTableView";
 import ProductTableView from "../view/ProductTableView";
@@ -11,6 +11,7 @@ import CardStatsVertical from "./CardStatsVertical";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import Overview from "./Overview";
 
 const AdminDashboard = () => {
   return (
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
           <Achievement />
         </Grid> */}
         <Grid item xs={12} md={8}>
-          <MonthlyOverview />
+          <Overview />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <WeeklyOverview />
