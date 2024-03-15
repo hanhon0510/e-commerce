@@ -22,7 +22,7 @@ const HomeSectionCarousel = ({ data, sectionName }) => {
     .map((item) => <HomeSectionCard product={item} />);
 
   return (
-    <div className="px-4 lg:px-8 ">
+    <div className="px-4 lg:px-8">
       <h2 className="text-2xl font-extrabold text-gray-800 py-5">
         {sectionName}
       </h2>

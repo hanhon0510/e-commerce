@@ -1,107 +1,137 @@
-// import React from "react";
-// import {
-//   Avatar,
-//   Box,
-//   Card,
-//   CardContent,
-//   CardHeader,
-//   Grid,
-//   IconButton,
-//   Typography,
-// } from "@mui/material";
-// import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-// import SettingsCellIcon from "@mui/icons-material/SettingsCell";
-// import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-// import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import { useTheme } from "@mui/material/styles";
+import CardHeader from "@mui/material/CardHeader";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import CardContent from "@mui/material/CardContent";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import ReactApexCharts from "react-apexcharts";
 
-// const statsData = [
-//   {
-//     value: "245K",
-//     label: "Sales",
-//     color: "#E5D68A",
-//     icon: <TrendingUpIcon style={{ fontSize: "28px" }} />,
-//   },
-//   {
-//     value: "14.5K",
-//     label: "Customers",
-//     color: "#22CB5C",
-//     icon: <AccountCircleIcon style={{ fontSize: "28px" }} />,
-//   },
-//   {
-//     value: "1.22K",
-//     label: "Products",
-//     color: "#DE4839",
-//     icon: <SettingsCellIcon style={{ fontSize: "28px" }} />,
-//   },
-//   {
-//     value: "78K",
-//     label: "Revenue",
-//     color: "#12B0E8",
-//     icon: <AttachMoneyIcon style={{ fontSize: "28px" }} />,
-//   },
-// ];
+const MonthlyOverview = () => {
+  const theme = useTheme();
 
-// // const DisplayStats = () => {
-// //   return statsData.map((stat, index) => (
-// //     <Grid item xs={12} sm={6} md={3} key={index}>
-// //       <Box display="flex" alignItems="center">
-// //         <Avatar
-// //           style={{
-// //             marginRight: "16px",
-// //             backgroundColor: stat.color,
-// //             color: "white",
-// //           }}
-// //         >
-// //           {stat.icon}
-// //         </Avatar>
-// //         <Box>
-// //           <Typography variant="subtitle2">{stat.label}</Typography>
-// //           <Typography variant="h6">{stat.value}</Typography>
-// //         </Box>
-// //       </Box>
-// //     </Grid>
-// //   ));
-// // };
+  const options = {
+    chart: {
+      parentHeightOffset: 0,
+      toolbar: { show: true },
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 9,
+        distributed: true,
+        columnWidth: "40%",
+        endingShape: "rounded",
+        startingShape: "rounded",
+      },
+    },
+    stroke: {
+      width: 2,
+      colors: [theme.palette.background.paper],
+    },
+    legend: { show: false },
+    grid: {
+      strokeDashArray: 7,
+      padding: {
+        top: -1,
+        right: 0,
+        left: -12,
+        bottom: 5,
+      },
+    },
+    dataLabels: { enabled: false },
+    colors: [
+      theme.palette.background.default,
+      theme.palette.background.default,
+      theme.palette.background.default,
+      theme.palette.primary.main,
+      theme.palette.background.default,
+      theme.palette.background.default,
+    ],
+    states: {
+      hover: {
+        filter: { type: "none" },
+      },
+      active: {
+        filter: { type: "none" },
+      },
+    },
+    xaxis: {
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+      tickPlacement: "on",
+      labels: { show: true },
+      axisTicks: { show: true },
+      axisBorder: { show: true },
+    },
+    yaxis: {
+      show: true,
+      tickAmount: 4,
+      labels: {
+        offsetX: -17,
+        formatter: (value) =>
+          `${value > 999 ? `${(value / 1000).toFixed(0)}` : value}k`,
+      },
+    },
+  };
 
-// const MonthlyOverview = () => {
-//   return (
-//     <Card className="pt-6">
-//       <CardHeader
-//         title="Monthly Overview"
-//         action={
-//           <IconButton>
-//             <MoreVertIcon />
-//           </IconButton>
-//         }
-//         subheader="Total 44.5% growth this month"
-//       />
-//       <CardContent>
-//         <Grid container spacing={2}>
-//           {statsData.map((stat, index) => (
-//             <Grid item xs={12} sm={6} md={3} key={index}>
-//               <Box display="flex" alignItems="center">
-//                 <Avatar
-//                   style={{
-//                     marginRight: "16px",
-//                     backgroundColor: stat.color,
-//                     color: "white",
-//                   }}
-//                 >
-//                   {stat.icon}
-//                 </Avatar>
-//                 <Box>
-//                   <Typography variant="subtitle2">{stat.label}</Typography>
-//                   <Typography variant="h6">{stat.value}</Typography>
-//                 </Box>
-//               </Box>
-//             </Grid>
-//           ))}
-//           {/* <DisplayStats /> */}
-//         </Grid>
-//       </CardContent>
-//     </Card>
-//   );
-// };
+  return (
+    <Card>
+      <CardHeader
+        title="Monthly Overview"
+        titleTypographyProps={{
+          sx: {
+            lineHeight: "0rem !important",
+            letterSpacing: "0.15px !important",
+          },
+        }}
+        action={
+          <IconButton
+            size="small"
+            aria-label="settings"
+            className="card-more-options"
+            sx={{ color: "text.secondary" }}
+          >
+            <MoreVertIcon />
+          </IconButton>
+        }
+      />
+      <CardContent
+        sx={{ "& .apexcharts-xcrosshairs.apexcharts-active": { opacity: 0 } }}
+      >
+        <ReactApexCharts
+          type="bar"
+          height={201}
+          options={options}
+          series={[{ data: [37, 57, 45, 75, 57, 40, 65, 25, 77, 44, 54, 34] }]}
+        />
+        <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
+          <Typography variant="h5" sx={{ mr: 4 }}>
+            45%
+          </Typography>
+          <Typography variant="body2">
+            Your sales performance is 45% better compared to last month
+          </Typography>
+        </Box>
+        <Button fullWidth variant="contained">
+          Details
+        </Button>
+      </CardContent>
+    </Card>
+  );
+};
 
-// export default MonthlyOverview;
+export default MonthlyOverview;

@@ -28,10 +28,6 @@ const ProductsTable = () => {
     // console.log("products: ", products);
   };
 
-  // const openConfirm = () => {
-  //   setDeleteProduct(true);
-  // };
-
   useEffect(() => {
     const data = {
       category: "",

@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import Achievement from "./Achievement";
-// import MonthlyOverview from "./MonthlyOverview";
+import MonthlyOverview from "./MonthlyOverview";
 import WeeklyOverview from "./WeeklyOverview";
 import OrderTableView from "../view/OrderTableView";
 import ProductTableView from "../view/ProductTableView";
@@ -19,12 +19,12 @@ const AdminDashboard = () => {
         <Grid item xs={12} md={4}>
           <Achievement />
         </Grid>
-        <Grid item xs={12} md={8}>
-          <Achievement />
-        </Grid>
         {/* <Grid item xs={12} md={8}>
-          <MonthlyOverview />
+          <Achievement />
         </Grid> */}
+        <Grid item xs={12} md={8}>
+          <MonthlyOverview />
+        </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <WeeklyOverview />
         </Grid>
